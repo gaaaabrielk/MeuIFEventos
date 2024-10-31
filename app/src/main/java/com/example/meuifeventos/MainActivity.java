@@ -10,12 +10,18 @@ import android.widget.ImageButton;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.Firebase;
+
+import java.io.FileReader;
+
 
 public class MainActivity extends AppCompatActivity {
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
 
             Button btnProfessor = findViewById(R.id.btnProfessor);
             Button btnAluno = findViewById(R.id.btnAluno);
@@ -38,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+
+
+
 
 
     }
