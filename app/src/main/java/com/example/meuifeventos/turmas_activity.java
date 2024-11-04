@@ -10,8 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class turmas_activity extends AppCompatActivity {
+
+    private TurmasAdapter turmasAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,32 +24,16 @@ public class turmas_activity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_turmas);
 
-        Button priInf = findViewById(R.id.btnPriInf);
-        Button segInf = findViewById(R.id.btnSegInf);
+        turmasAdapter = new TurmasAdapter(new ArrayList<>());
+
+        RecyclerView salame = findViewById(R.id.recyclerViewItems);
+        salame.setAdapter(turmasAdapter());
 
 
-        priInf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent intent = new Intent(turmas_activity.this, calendar_activity.class);
-                startActivity(intent);
+    }
 
-            }
-
-            });
-
-
-        segInf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(turmas_activity.this, calendar_activity.class);
-                startActivity(intent);
-
-            }
-
-        });
-
+    private RecyclerView.Adapter turmasAdapter() {
+        return null;
     }
 }

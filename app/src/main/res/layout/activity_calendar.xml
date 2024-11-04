@@ -20,15 +20,14 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintVertical_bias="0.092" />
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="365dp"
-        android:layout_height="350dp"
+        android:layout_width="364dp"
+        android:layout_height="383dp"
         android:focusedMonthDateColor="#F4F4F4"
         android:unfocusedMonthDateColor="#B3A3A3"
         android:visibility="visible"
@@ -45,14 +44,14 @@
         android:id="@+id/conteudoDia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.726"
+        app:layout_constraintVertical_bias="0.914"
         tools:ignore="MissingConstraints">
 
         <EditText
@@ -60,10 +59,11 @@
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:background="@drawable/texto"
             android:hint="Escreva Aqui"
             android:padding="5dp"
-            android:textColor="@color/black" />
+            android:layout_marginLeft="60dp"
+            android:textColor="@color/black"
+            android:textAlignment="center"/>
 
         <Button
             android:id="@+id/SalvarEvento"
@@ -71,7 +71,10 @@
             android:layout_height="60dp"
             android:backgroundTint="@color/white"
             android:text="Salvar"
+            android:layout_marginLeft="150dp"
             android:textColor="@color/Lightgray" />
+
+
     </LinearLayout>
 
 
