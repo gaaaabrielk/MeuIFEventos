@@ -25,9 +25,10 @@ public class menu_activity extends AppCompatActivity {
         btnNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(menu_activity.this, turmas_activity.class);
+                Intent intent = new Intent(menu_activity.this, addTurmas.class);
                 startActivity(intent);
+
+
             }
         });
 

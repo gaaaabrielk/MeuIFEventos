@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MeuIFEventos"
         tools:targetApi="31">
         <activity
+            android:name=".addTurmas"
+            android:exported="false" />
+        <activity
+            android:name=".addEvento"
+            android:exported="false" />
+        <activity
             android:name=".cEvento"
             android:exported="false" />
         <activity
