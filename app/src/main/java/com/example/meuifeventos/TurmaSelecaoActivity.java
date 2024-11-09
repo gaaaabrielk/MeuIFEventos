@@ -54,9 +54,10 @@ public class TurmaSelecaoActivity extends AppCompatActivity {
                             }
                             turmaAdapter = new TurmaAdapter(turmasList, turmaId -> {
                                 // Quando uma turma for clicada, passamos o TURMA_ID
-                                Intent intent = new Intent(TurmaSelecaoActivity.this, AlunosActivity.class);
-                                intent.putExtra("TURMA_ID", turmaId);
+                                Intent intent = new Intent(TurmaSelecaoActivity.this, addEvento.class);
+                                intent.putExtra("TURMA_ID", turmaId);  // Passando o turmaID
                                 startActivity(intent);
+
                             });
                             recyclerViewTurmas.setAdapter(turmaAdapter);
                         }

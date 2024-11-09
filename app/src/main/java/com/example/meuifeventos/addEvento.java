@@ -36,6 +36,8 @@ public class addEvento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_evento);
 
+        String turmaID = getIntent().getStringExtra("TURMA_ID");
+
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -75,17 +77,33 @@ public class addEvento extends AppCompatActivity {
         String local = etLocal.getText().toString();
 
         if (!titulo.isEmpty() && !descricao.isEmpty() && !data.isEmpty() && !local.isEmpty()) {
+            // Pegando o turmaID
+            String turmaID = getIntent().getStringExtra("TURMA_ID");
+
+            // Criando um evento com os dados inseridos
             Evento evento = new Evento(titulo, descricao, data, local);
-            eventos.add(evento);
-            eventoAdapter.notifyItemInserted(eventos.size() - 1);
 
-
-            etTitulo.setText("");
-            etDescricao.setText("");
-            etData.setText("");
-            etLocal.setText("");
+            // Adicionando o evento na subcoleção "eventos" da turma específica
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("Turmas")  // Coleção de turmas
+                    .document(turmaID)  // Documento específico da turma
+                    .collection("eventos")  // Subcoleção "eventos" dentro da turma
+                    .add(evento)  // Adiciona o evento
+                    .addOnSuccessListener(documentReference -> {
+                        Log.d("addEvento", "Evento adicionado com sucesso.");
+                        // Resetar os campos após adicionar o evento
+                        etTitulo.setText("");
+                        etDescricao.setText("");
+                        etData.setText("");
+                        etLocal.setText("");
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.w("addEvento", "Erro ao adicionar evento.", e);
+                    });
         }
     }
+
+
 
 
 }

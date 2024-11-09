@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), TurmaSelecaoActivity.class);
-                    intent.putExtra("TURMA_ID", "ESPETS"); // ID da turma (troque "ESPETS" pela turma correta)
+                    intent.putExtra("TURMA_ID", "TURMA");
                     startActivity(intent);
 
 
