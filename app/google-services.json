@@ -25,5 +25,13 @@
       }
     }
   ],
-  "configuration_version": "1"
+  "configuration_version": "1",
+
+  "rules": {
+    "Turmas": {
+      ".read": true,
+      ".write": true
+    }
+  }
 }
+

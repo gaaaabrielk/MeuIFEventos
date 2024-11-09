@@ -13,6 +13,24 @@
         android:theme="@style/Theme.MeuIFEventos"
         tools:targetApi="31">
         <activity
+            android:name=".AlunosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TurmaSelecaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetalhesTurmaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TurmaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SelecaoTurmas"
+            android:exported="false" />
+        <activity
+            android:name=".turmas"
+            android:exported="false" />
+        <activity
             android:name=".addTurmas"
             android:exported="false" />
         <activity

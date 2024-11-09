@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Título da tela -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecione uma Turma"
+        android:textSize="24sp"
+        android:padding="16dp"
+        android:textStyle="bold"/>
+
+    <!-- RecyclerView para listar as turmas -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewTurmas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"/>
+</LinearLayout>

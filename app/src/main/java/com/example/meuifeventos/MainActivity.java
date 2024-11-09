@@ -11,6 +11,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.Firebase;
+import com.google.firebase.FirebaseApp;
 
 import java.io.FileReader;
 
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main);
+
+
+            FirebaseApp.initializeApp(this);
 
 
             Button btnProfessor = findViewById(R.id.btnProfessor);
@@ -39,8 +43,11 @@ public class MainActivity extends AppCompatActivity {
             btnAluno.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, addEvento.class);
+                    Intent intent = new Intent(getApplicationContext(), TurmaSelecaoActivity.class);
+                    intent.putExtra("TURMA_ID", "ESPETS"); // ID da turma (troque "ESPETS" pela turma correta)
                     startActivity(intent);
+
+
 
                 }
             });
