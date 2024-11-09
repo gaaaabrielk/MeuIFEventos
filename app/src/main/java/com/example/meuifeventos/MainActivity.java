@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             btnAluno.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), TurmaSelecaoActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ListaTurmasActivity.class);
                     intent.putExtra("TURMA_ID", "TURMA");
                     startActivity(intent);
 
