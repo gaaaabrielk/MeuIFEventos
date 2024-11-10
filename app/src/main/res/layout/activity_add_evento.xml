@@ -42,6 +42,16 @@
         android:layout_width="match_parent"
         android:layout_height="286dp" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnVoltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:contentDescription="TODO"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"/>
+
 
 
 

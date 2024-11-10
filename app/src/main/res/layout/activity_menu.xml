@@ -42,6 +42,16 @@
             android:padding="30dp"
             app:srcCompat="@drawable/calendar" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_marginTop="350dp"
+            android:layout_marginLeft="30dp"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
+
 
     </LinearLayout>
 

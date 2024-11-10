@@ -3,6 +3,7 @@ package com.example.meuifeventos;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,16 +33,22 @@ public class ListaTurmasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_turmas);
 
+        Button btnVoltarInicial = findViewById(R.id.btnVoltarInicial);
+        btnVoltarInicial.setOnClickListener(v -> {
+            Intent intent = new Intent(ListaTurmasActivity.this, MainActivity.class);
+            startActivity(intent);
+        });
+
+
         recyclerViewTurmas = findViewById(R.id.recyclerViewTurmas);
         recyclerViewTurmas.setLayoutManager(new LinearLayoutManager(this));
 
-        // Carregar a lista de turmas do Firestore
         loadTurmasFromFirebase();
     }
 
     // Método para carregar as turmas do Firebase
     private void loadTurmasFromFirebase() {
-        db.collection("Turmas") // Coleção de turmas no Firestore
+        db.collection("Turmas")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -55,7 +62,7 @@ public class ListaTurmasActivity extends AppCompatActivity {
                             turmaAdapter = new TurmaAdapter(turmasList, turmaId -> {
                                 // Quando uma turma for clicada, passamos o TURMA_ID
                                 Intent intent = new Intent(this, ExibirEventosActivity.class);
-                                intent.putExtra("TURMA_ID", turmaId);  // Passando o turmaID
+                                intent.putExtra("TURMA_ID", turmaId);
                                 startActivity(intent);
 
                             });

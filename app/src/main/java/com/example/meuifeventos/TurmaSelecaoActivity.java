@@ -3,6 +3,7 @@ package com.example.meuifeventos;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,23 +26,29 @@ public class TurmaSelecaoActivity extends AppCompatActivity {
     private RecyclerView recyclerViewTurmas;
     private TurmaAdapter turmaAdapter;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private List<String> turmasList = new ArrayList<>(); // Lista de IDs das turmas
+    private List<String> turmasList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_turma_selecao);
 
+
+        Button btnVoltarInicial = findViewById(R.id.btnVoltarInicial);
+        btnVoltarInicial.setOnClickListener(v -> {
+            Intent intent = new Intent(this, menu_activity.class);
+            startActivity(intent);
+        });
+
         recyclerViewTurmas = findViewById(R.id.recyclerViewTurmas);
         recyclerViewTurmas.setLayoutManager(new LinearLayoutManager(this));
 
-        // Carregar a lista de turmas do Firestore
         loadTurmasFromFirebase();
     }
 
     // Método para carregar as turmas do Firebase
     private void loadTurmasFromFirebase() {
-        db.collection("Turmas") // Coleção de turmas no Firestore
+        db.collection("Turmas") //
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -50,7 +57,7 @@ public class TurmaSelecaoActivity extends AppCompatActivity {
                         if (querySnapshot != null) {
                             for (QueryDocumentSnapshot document : querySnapshot) {
                                 String turmaId = document.getId(); // Pega o ID da turma
-                                turmasList.add(turmaId); // Adiciona o ID à lista
+                                turmasList.add(turmaId);
                             }
                             turmaAdapter = new TurmaAdapter(turmasList, turmaId -> {
                                 // Quando uma turma for clicada, passamos o TURMA_ID

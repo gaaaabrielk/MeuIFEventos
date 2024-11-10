@@ -24,14 +24,14 @@ public class TurmaAdapter extends RecyclerView.Adapter<TurmaAdapter.TurmaViewHol
     @Override
     public TurmaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_turma, parent, false); // Layout do item da turma
+                .inflate(R.layout.item_turma, parent, false);
         return new TurmaViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TurmaViewHolder holder, int position) {
         String turmaId = turmas.get(position);
-        holder.turmaName.setText(turmaId); // Nome da turma
+        holder.turmaName.setText(turmaId);
 
         // Ao clicar na turma, a listener é chamada
         holder.itemView.setOnClickListener(v -> listener.onItemClick(turmaId));
@@ -47,7 +47,7 @@ public class TurmaAdapter extends RecyclerView.Adapter<TurmaAdapter.TurmaViewHol
 
         public TurmaViewHolder(View itemView) {
             super(itemView);
-            turmaName = itemView.findViewById(R.id.turmaName); // Aqui você associa o TextView do layout
+            turmaName = itemView.findViewById(R.id.turmaName);
         }
     }
 
