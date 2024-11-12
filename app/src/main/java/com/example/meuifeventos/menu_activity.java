@@ -39,6 +39,7 @@ public class menu_activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(menu_activity.this, TurmaSelecaoActivity.class);
+                intent.putExtra("TURMA_ID", "TURMA");
                 startActivity(intent);
 
 

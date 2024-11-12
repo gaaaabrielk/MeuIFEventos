@@ -13,6 +13,12 @@
         android:theme="@style/Theme.MeuIFEventos"
         tools:targetApi="31">
         <activity
+            android:name=".SolicitarItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListaItensActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListaTurmasActivity"
             android:exported="false" />
         <activity

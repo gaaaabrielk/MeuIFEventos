@@ -5,9 +5,9 @@ public class Aluno {
     private String Matricula;
     private String Turma;
 
-    // Construtor padrão
+
     public Aluno() {
-        // Firebase precisa de um construtor sem argumentos para deserializar corretamente
+
     }
 
     // Getters e Setters

@@ -32,7 +32,7 @@ public class AlunosActivity extends AppCompatActivity {
         String turmaId = getIntent().getStringExtra("TURMA_ID");
         Log.d("AlunosActivity", "Turma ID: " + turmaId);  // Para verificar se o ID foi passado corretamente
 
-        // Carregar os alunos da turma selecionada
+
         loadAlunosFromFirebase(turmaId);
     }
 

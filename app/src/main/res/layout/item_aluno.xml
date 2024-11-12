@@ -6,7 +6,7 @@
     android:padding="16dp"
     android:background="?android:attr/selectableItemBackground">
 
-    <!-- Nome do Aluno -->
+
     <TextView
         android:id="@+id/alunoName"
         android:layout_width="wrap_content"

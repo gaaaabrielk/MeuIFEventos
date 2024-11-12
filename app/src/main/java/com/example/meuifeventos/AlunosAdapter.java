@@ -20,7 +20,7 @@ public class AlunosAdapter extends RecyclerView.Adapter<AlunosAdapter.AlunoViewH
         this.alunos = alunos;
     }
 
-    // Atualiza a lista de alunos e notifica o RecyclerView
+
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
         notifyDataSetChanged(); // Notifica o RecyclerView para atualizar a exibição
@@ -29,7 +29,7 @@ public class AlunosAdapter extends RecyclerView.Adapter<AlunosAdapter.AlunoViewH
     @NonNull
     @Override
     public AlunoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // Infla o layout de item para cada aluno
+
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_aluno, parent, false);
         return new AlunoViewHolder(view);
@@ -37,7 +37,7 @@ public class AlunosAdapter extends RecyclerView.Adapter<AlunosAdapter.AlunoViewH
 
     @Override
     public void onBindViewHolder(@NonNull AlunoViewHolder holder, int position) {
-        // Popula a view com os dados do aluno
+
         Aluno aluno = alunos.get(position);
         holder.nomeTextView.setText(aluno.getNome());
 
@@ -46,7 +46,7 @@ public class AlunosAdapter extends RecyclerView.Adapter<AlunosAdapter.AlunoViewH
 
     @Override
     public int getItemCount() {
-        return alunos.size(); // Retorna o número de alunos
+        return alunos.size();
     }
 
     public static class AlunoViewHolder extends RecyclerView.ViewHolder {

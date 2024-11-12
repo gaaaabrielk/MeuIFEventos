@@ -96,7 +96,7 @@ public class addEvento extends AppCompatActivity {
             // Criando um evento com os dados inseridos
             Evento evento = new Evento(titulo, descricao, data, local);
 
-            // Adicionando o evento na subcoleção "eventos" da turma específica
+
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("Turmas")  // Coleção de turmas
                     .document(turmaID)  // Documento específico da turma

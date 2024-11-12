@@ -9,9 +9,9 @@ public class Evento {
     private String local;
 
     @DocumentId
-    private String id; // Isso irá armazenar o ID do documento do Firestore (opcional)
+    private String id;
 
-    // Construtor vazio necessário para o Firestore
+
     public Evento() {
     }
 
@@ -39,7 +39,7 @@ public class Evento {
         return local;
     }
 
-    // Setters (Necessários para o Firestore)
+
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
@@ -56,12 +56,12 @@ public class Evento {
         this.local = local;
     }
 
-    // Getter para o ID (caso use o @DocumentId)
+
     public String getId() {
         return id;
     }
 
-    // Setter para o ID (caso use o @DocumentId)
+
     public void setId(String id) {
         this.id = id;
     }

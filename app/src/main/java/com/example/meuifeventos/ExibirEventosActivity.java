@@ -54,7 +54,7 @@ public class ExibirEventosActivity extends AppCompatActivity {
         eventoAdapter = new EventoAdapter(eventosList);
         recyclerViewEventos.setAdapter(eventoAdapter);
 
-        // Carregar os eventos da turma
+
         carregarEventos();
     }
 

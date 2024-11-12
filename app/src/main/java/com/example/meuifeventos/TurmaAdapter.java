@@ -33,7 +33,7 @@ public class TurmaAdapter extends RecyclerView.Adapter<TurmaAdapter.TurmaViewHol
         String turmaId = turmas.get(position);
         holder.turmaName.setText(turmaId);
 
-        // Ao clicar na turma, a listener é chamada
+
         holder.itemView.setOnClickListener(v -> listener.onItemClick(turmaId));
     }
 
@@ -51,7 +51,7 @@ public class TurmaAdapter extends RecyclerView.Adapter<TurmaAdapter.TurmaViewHol
         }
     }
 
-    // Interface para capturar o clique no item da turma
+
     public interface OnItemClickListener {
         void onItemClick(String turmaId); // Passa o ID da turma
     }

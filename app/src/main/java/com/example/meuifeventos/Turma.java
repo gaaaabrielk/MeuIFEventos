@@ -4,10 +4,10 @@ public class Turma {
     private String id;
     private String nome;
 
-    // Construtor vazio necessário para o Firebase
+
     public Turma() {}
 
-    // Construtor para criar a turma com nome
+
     public Turma(String id, String nome) {
         this.id = id;
         this.nome = nome;
