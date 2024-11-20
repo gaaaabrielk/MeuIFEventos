@@ -1,7 +1,8 @@
 package com.example.meuifeventos;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,43 +13,45 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListaItensActivity extends AppCompatActivity {
+public class ItemActivity extends AppCompatActivity {
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private RecyclerView recyclerViewItens;
-    private ItemAdapter itemAdapter;
-    private FirebaseFirestore db;
-    private List<Item> itemList = new ArrayList<>();
+    private ItemAdapter itemAdapter;  // Adapter para listar os itens
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_itens);
+        setContentView(R.layout.activity_item);
 
         recyclerViewItens = findViewById(R.id.recyclerViewItens);
         recyclerViewItens.setLayoutManager(new LinearLayoutManager(this));
 
-        db = FirebaseFirestore.getInstance();
 
-        loadItensFromFirebase();
+        carregarItens();
     }
 
-    private void loadItensFromFirebase() {
+    // Carrega os itens do Firebase ou de outra fonte
+    private void carregarItens() {
         db.collection("itens")
-                .whereEqualTo("disponibilidade", true) // Filtrar apenas itens disponíveis
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        itemList.clear();
+                        List<Item> itens = new ArrayList<>();
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Item item = document.toObject(Item.class);
-                            item.setId(document.getId());
-                            itemList.add(item);
+                            itens.add(item);
                         }
-                        itemAdapter = new ItemAdapter(itemList);
+                        itemAdapter = new ItemAdapter(itens, item -> {
+                            Intent intent = new Intent(ItemActivity.this, SolicitacaoActivity.class);
+                            intent.putExtra("ITEM_ID", item.getId()); // Envia o ID do item
+                            intent.putExtra("ALUNO_ID", "aluno1");   // Exemplo de aluno ID
+                            intent.putExtra("ITEM_NOME", item.getNome());    // Envia o nome do item
+                            startActivity(intent);
+                        });
+
                         recyclerViewItens.setAdapter(itemAdapter);
-                    } else {
-                        Log.e("ListaItens", "Erro ao carregar itens", task.getException());
+
                     }
                 });
     }
 }
-
