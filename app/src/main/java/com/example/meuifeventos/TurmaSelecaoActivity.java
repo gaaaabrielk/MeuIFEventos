@@ -46,7 +46,6 @@ public class TurmaSelecaoActivity extends AppCompatActivity {
         loadTurmasFromFirebase();
     }
 
-    // Método para carregar as turmas do Firebase
     private void loadTurmasFromFirebase() {
         db.collection("Turmas") //
                 .get()
@@ -56,13 +55,13 @@ public class TurmaSelecaoActivity extends AppCompatActivity {
                         QuerySnapshot querySnapshot = task.getResult();
                         if (querySnapshot != null) {
                             for (QueryDocumentSnapshot document : querySnapshot) {
-                                String turmaId = document.getId(); // Pega o ID da turma
+                                String turmaId = document.getId();
                                 turmasList.add(turmaId);
                             }
                             turmaAdapter = new TurmaAdapter(turmasList, turmaId -> {
-                                // Quando uma turma for clicada, passamos o TURMA_ID
+                                Log.d("TurmaSelecaoActivity", "Turma selecionada: " + turmaId);
                                 Intent intent = new Intent(TurmaSelecaoActivity.this, addEvento.class);
-                                intent.putExtra("TURMA_ID", turmaId);  // Passando o turmaID
+                                intent.putExtra("TURMA_ID", turmaId);
                                 startActivity(intent);
 
                             });

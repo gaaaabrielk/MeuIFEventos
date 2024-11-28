@@ -23,19 +23,8 @@ public class menu_activity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
 
-       FloatingActionButton btnVoltar = findViewById(R.id.btnVoltar);
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(menu_activity.this, MainActivity.class);
-                startActivity(intent);
-
-
-            }
-        });
-
-       ImageButton btnNavigate = findViewById(R.id.calendario);
-       btnNavigate.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton btnNavigate = findViewById(R.id.Eventos);
+        btnNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(menu_activity.this, TurmaSelecaoActivity.class);
@@ -46,14 +35,30 @@ public class menu_activity extends AppCompatActivity {
             }
         });
 
+        FloatingActionButton btnNavigate2 = findViewById(R.id.Itens);
+        btnNavigate2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ItemActivity.class);
+                intent.putExtra("TURMA_ID", "TURMA");
+                startActivity(intent);
 
-
-
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+            }
         });
+
+
+        FloatingActionButton btnNaviagte3 = findViewById(R.id.Alunos);
+        btnNaviagte3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AlunosActivity.class);
+                intent.putExtra("TURMA_ID", "TURMA");
+                startActivity(intent);
+            }
+        });
+
+
+
+
     }
 }

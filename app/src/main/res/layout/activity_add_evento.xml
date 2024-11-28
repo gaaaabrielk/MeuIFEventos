@@ -1,58 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/white"
+    >
 
-    <EditText
-        android:id="@+id/etTitulo"
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="408dp"
+        android:layout_height="88dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <ImageView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="100dp"
+            android:layout_height="68dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="270dp"
+            android:layout_weight="1"
+            android:src="@drawable/meuif"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/ivSettings"
+            android:layout_width="38dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_baseline_settings_24" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:hint="Título do Evento" />
-
-    <EditText
-        android:id="@+id/etDescricao"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:hint="Descrição do Evento" />
-
-    <EditText
-        android:id="@+id/etData"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:hint="Data do Evento"
-        android:focusable="false" />
-
-    <EditText
-        android:id="@+id/etLocal"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:hint="Local do Evento" />
-
-    <Button
-        android:id="@+id/btnAddEvento"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar Evento" />
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.21"
+        tools:layout_editor_absoluteX="-16dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="286dp" />
+        <EditText
+            android:id="@+id/etTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/texto"
+            android:hint="Título do Evento"
+            android:paddingStart="6dp"
+            android:paddingEnd="4dp"
+            tools:ignore="Autofill,TextFields" />
+
+        <EditText
+            android:id="@+id/etDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/texto"
+            android:hint="Descrição do Evento"
+            android:paddingStart="6dp"
+            android:paddingEnd="4dp"
+            tools:ignore="Autofill,TextFields" />
+
+        <EditText
+            android:id="@+id/etData"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/texto"
+            android:focusable="false"
+            android:hint="Data do Evento"
+            android:paddingStart="6dp"
+            android:paddingEnd="4dp"
+            tools:ignore="Autofill,TextFields" />
+
+        <EditText
+            android:id="@+id/etLocal"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/texto"
+            android:hint="Local do Evento"
+            android:paddingStart="6dp"
+            android:paddingEnd="4dp"
+            tools:ignore="Autofill,TextFields" />
+
+        <Button
+            android:id="@+id/btnAddEvento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="125dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/white"
+            android:text="Adicionar Evento"
+            android:textColor="@color/black" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:background="@drawable/textview"
+        android:gravity="bottom"
+        android:padding="10dp"
+        android:text="Consultar Eventos"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.155"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header_layout"
+        app:layout_constraintVertical_bias="0.733"
+        tools:ignore="RtlCompat" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnVoltar"
-        android:layout_width="match_parent"
+        android:id="@+id/consultaE"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginLeft="20dp"
+        android:background="#E0E0E0"
+        android:backgroundTint="@color/gray"
         android:contentDescription="TODO"
-        android:src="@drawable/baseline_arrow_back_ios_new_24"/>
+        android:src="@drawable/baseline_calendar_month_24"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/header_layout"
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="@+id/header_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.687" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:background="@drawable/textview"
+        android:gravity="bottom"
+        android:padding="10dp"
+        android:text="ListaTurmas"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header_layout"
+        app:layout_constraintVertical_bias="0.726"
+        tools:ignore="RtlCompat" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/listaTurmas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E0E0E0"
+        android:backgroundTint="@color/gray"
+        android:contentDescription="TODO"
+        android:src="@drawable/baseline_format_list_bulleted_24"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/header_layout"
+        app:layout_constraintHorizontal_bias="0.806"
+        app:layout_constraintStart_toStartOf="@+id/header_layout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.687" />
 
 
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

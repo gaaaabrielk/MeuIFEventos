@@ -1,24 +1,19 @@
 package com.example.meuifeventos;
 
 public class Solicitacao {
-    private String itemId;
+
     private String alunoId;
+    private String itemId;
     private String status;
 
-    // Construtor
-    public Solicitacao(String itemId, String alunoId, String status) {
-        this.itemId = itemId;
+    public Solicitacao() {
+        // Construtor vazio para o Firebase
+    }
+
+    public Solicitacao(String alunoId, String itemId, String status) {
         this.alunoId = alunoId;
-        this.status = status;
-    }
-
-    // Getters e setters
-    public String getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(String itemId) {
         this.itemId = itemId;
+        this.status = status;
     }
 
     public String getAlunoId() {
@@ -27,6 +22,14 @@ public class Solicitacao {
 
     public void setAlunoId(String alunoId) {
         this.alunoId = alunoId;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
     }
 
     public String getStatus() {

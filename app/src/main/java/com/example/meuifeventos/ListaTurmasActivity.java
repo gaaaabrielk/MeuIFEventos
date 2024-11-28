@@ -61,7 +61,7 @@ public class ListaTurmasActivity extends AppCompatActivity {
                             }
                             turmaAdapter = new TurmaAdapter(turmasList, turmaId -> {
                                 // Quando uma turma for clicada, passamos o TURMA_ID
-                                Intent intent = new Intent(this, ExibirEventosActivity.class);
+                                Intent intent = new Intent(this, AlunosActivity.class);
                                 intent.putExtra("TURMA_ID", turmaId);
                                 startActivity(intent);
 

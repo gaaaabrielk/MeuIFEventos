@@ -1,62 +1,36 @@
 package com.example.meuifeventos;
 
-import android.content.Intent;
-import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class addEvento extends AppCompatActivity {
 
-    private List<Evento> eventos = new ArrayList<>();
-    private EventoAdapter eventoAdapter;
     private EditText etTitulo, etDescricao, etData, etLocal;
     private Button btnAddEvento;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_evento);
 
-        String turmaID = getIntent().getStringExtra("TURMA_ID");
 
+        db = FirebaseFirestore.getInstance();
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        FloatingActionButton btnVoltar = findViewById(R.id.btnVoltar);
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(addEvento.this, MainActivity.class);
-                startActivity(intent);
-
-
-            }
-        });
-
-        eventoAdapter = new EventoAdapter(eventos);
-        recyclerView.setAdapter(eventoAdapter);
 
         etTitulo = findViewById(R.id.etTitulo);
         etDescricao = findViewById(R.id.etDescricao);
@@ -64,10 +38,44 @@ public class addEvento extends AppCompatActivity {
         etLocal = findViewById(R.id.etLocal);
         btnAddEvento = findViewById(R.id.btnAddEvento);
 
+
+
+
+
+        String turmaId = getIntent().getStringExtra("TURMA_ID");
+        if (turmaId == null) {
+            Log.e("addEvento", "TURMA_ID não encontrado.");
+            finish();
+            return;
+        }
+
         etData.setOnClickListener(view -> showDatePickerDialog());
 
-        btnAddEvento.setOnClickListener(view -> addEvento());
+
+        btnAddEvento.setOnClickListener(view -> addEvento(turmaId));
+
+
+       FloatingActionButton btnListaTurma = findViewById(R.id.listaTurmas);
+        btnListaTurma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(addEvento.this, TurmaSelecaoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        FloatingActionButton btnNavigate = findViewById(R.id.consultaE);
+        btnNavigate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(addEvento.this, ExibirEventosActivity.class);
+                intent.putExtra("TURMA_ID", turmaId);
+                startActivity(intent);
+            }
+        });
     }
+
 
     private void showDatePickerDialog() {
         Calendar calendar = Calendar.getInstance();
@@ -83,23 +91,21 @@ public class addEvento extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    private void addEvento() {
+
+    private void addEvento(String turmaId) {
         String titulo = etTitulo.getText().toString();
         String descricao = etDescricao.getText().toString();
         String data = etData.getText().toString();
         String local = etLocal.getText().toString();
 
+        // Verifica se todos os campos foram preenchidos
         if (!titulo.isEmpty() && !descricao.isEmpty() && !data.isEmpty() && !local.isEmpty()) {
-            // Pegando o turmaID
-            String turmaID = getIntent().getStringExtra("TURMA_ID");
-
             // Criando um evento com os dados inseridos
             Evento evento = new Evento(titulo, descricao, data, local);
 
-
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection("Turmas")  // Coleção de turmas
-                    .document(turmaID)  // Documento específico da turma
+            // Adiciona o evento na subcoleção "eventos" da turma no Firestore
+            db.collection("Turmas")
+                    .document(turmaId)
                     .collection("eventos")  // Subcoleção "eventos" dentro da turma
                     .add(evento)  // Adiciona o evento
                     .addOnSuccessListener(documentReference -> {
@@ -109,14 +115,14 @@ public class addEvento extends AppCompatActivity {
                         etDescricao.setText("");
                         etData.setText("");
                         etLocal.setText("");
+                        Toast.makeText(addEvento.this, "Evento adicionado com sucesso!", Toast.LENGTH_SHORT).show();
                     })
                     .addOnFailureListener(e -> {
                         Log.w("addEvento", "Erro ao adicionar evento.", e);
+                        Toast.makeText(addEvento.this, "Erro ao adicionar evento.", Toast.LENGTH_SHORT).show();
                     });
+        } else {
+            Toast.makeText(addEvento.this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
         }
     }
-
-
-
-
 }

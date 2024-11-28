@@ -13,17 +13,25 @@
         android:padding="16dp"
         android:textStyle="bold"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTurmas"
         android:layout_width="match_parent"
-        android:layout_height="290dp"
+        android:layout_height="437dp"
         android:padding="8dp" />
 
 
     <Button
         android:id="@+id/btnVoltarInicial"
         android:layout_width="match_parent"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:text="Voltar à Tela Inicial"
         android:layout_marginTop="16dp" />

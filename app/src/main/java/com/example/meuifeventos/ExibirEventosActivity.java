@@ -23,7 +23,7 @@ public class ExibirEventosActivity extends AppCompatActivity {
     private RecyclerView recyclerViewEventos;
     private EventoAdapter eventoAdapter;
     private List<Evento> eventosList;
-    private String turmaID;
+    private String turmaId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,8 @@ public class ExibirEventosActivity extends AppCompatActivity {
 
 
 
-        // Recupera o turmaID passado pela Intent
-        turmaID = getIntent().getStringExtra("TURMA_ID");
+
+        turmaId = getIntent().getStringExtra("TURMA_ID");
 
         recyclerViewEventos = findViewById(R.id.recyclerViewEventos);
         recyclerViewEventos.setLayoutManager(new LinearLayoutManager(this));
@@ -61,7 +61,7 @@ public class ExibirEventosActivity extends AppCompatActivity {
     private void carregarEventos() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Turmas")
-                .document(turmaID)  // Referência da turma
+                .document(turmaId)
                 .collection("eventos")  // Subcoleção de eventos da turma
                 .get()
                 .addOnCompleteListener(task -> {

@@ -13,48 +13,40 @@ import java.util.List;
 
 
 public class AlunosAdapter extends RecyclerView.Adapter<AlunosAdapter.AlunoViewHolder> {
-    private List<Aluno> alunos;
 
-    // Construtor que recebe a lista de alunos
-    public AlunosAdapter(List<Aluno> alunos) {
-        this.alunos = alunos;
+    private List<Aluno> alunosList;
+
+    public AlunosAdapter(List<Aluno> alunosList) {
+        this.alunosList = alunosList;
     }
 
-
-    public void setAlunos(List<Aluno> alunos) {
-        this.alunos = alunos;
-        notifyDataSetChanged(); // Notifica o RecyclerView para atualizar a exibição
-    }
-
-    @NonNull
     @Override
-    public AlunoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
+    public AlunoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_aluno, parent, false);
         return new AlunoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AlunoViewHolder holder, int position) {
-
-        Aluno aluno = alunos.get(position);
-        holder.nomeTextView.setText(aluno.getNome());
-
-        Log.d("AdapterBinding", "Aluno exibido: Nome = " + aluno.getNome() + ", Matrícula = " + aluno.getMatricula());
+    public void onBindViewHolder(AlunoViewHolder holder, int position) {
+        Aluno aluno = alunosList.get(position);
+        holder.textViewNome.setText(aluno.getNome());
+        holder.textViewMatricula.setText(aluno.getMatricula());
     }
 
     @Override
     public int getItemCount() {
-        return alunos.size();
+        return alunosList.size();
     }
 
     public static class AlunoViewHolder extends RecyclerView.ViewHolder {
-        TextView nomeTextView;
+        TextView textViewNome;
+        TextView textViewMatricula;
 
         public AlunoViewHolder(View itemView) {
             super(itemView);
-            nomeTextView = itemView.findViewById(R.id.alunoName);
+            textViewNome = itemView.findViewById(R.id.textViewNome);
+            textViewMatricula = itemView.findViewById(R.id.textViewMatricula);
         }
     }
 }
