@@ -50,11 +50,15 @@ public class AlunosActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : querySnapshot) {
                                 Aluno aluno = document.toObject(Aluno.class);
                                 alunosList.add(aluno);
+                                Log.d("AlunosActivity", "Aluno encontrado: " + aluno.getNome()); // Log para debugar
                             }
                             alunosAdapter = new AlunosAdapter(alunosList);
                             recyclerViewAlunos.setAdapter(alunosAdapter);
                         }
+                    } else {
+                        Log.e("AlunosActivity", "Erro ao buscar alunos", task.getException()); // Log de erro
                     }
                 });
     }
+
 }

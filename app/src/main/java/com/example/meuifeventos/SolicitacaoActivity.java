@@ -1,7 +1,6 @@
 package com.example.meuifeventos;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SolicitacaoActivity extends AppCompatActivity {
-    private TextView tvItemNome, tvItemId, tvAlunoId;
+
+    private TextView tvAlunoId;
     private Button btnSolicitar;
 
     @Override
@@ -20,33 +20,27 @@ public class SolicitacaoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_solicitacao);
 
         // Recuperando os dados passados pela Intent
-        String itemNome = getIntent().getStringExtra("ITEM_NOME");
-        String itemId = getIntent().getStringExtra("ITEM_ID");
         String alunoId = getIntent().getStringExtra("ALUNO_ID");
 
         // Inicializando as Views
-        tvItemNome = findViewById(R.id.tvItemNome);
-        tvItemId = findViewById(R.id.tvItemId);
         tvAlunoId = findViewById(R.id.tvAlunoId);
         btnSolicitar = findViewById(R.id.btnSolicitar);
 
         // Exibindo as informações na tela
-        tvItemNome.setText("Item Solicitado: " + itemNome);
-        tvItemId.setText("ID do Item: " + itemId);
         tvAlunoId.setText("Aluno ID: " + alunoId);
 
         // Configurando o botão para fazer a solicitação
         btnSolicitar.setOnClickListener(v -> {
-            registrarSolicitacao(itemId, alunoId, itemNome);
+            registrarSolicitacao(alunoId);
         });
     }
 
     // Método para registrar a solicitação no Firebase
-    private void registrarSolicitacao(String itemId, String alunoId, String itemNome) {
+    private void registrarSolicitacao(String alunoId) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         // Criando o objeto de solicitação
-        Solicitacao solicitacao = new Solicitacao(itemId, alunoId, "Pendente"); // Status pode ser "Pendente", "Aprovado", etc.
+        Solicitacao solicitacao = new Solicitacao(alunoId, "Pendente");
 
         // Adicionando a solicitação na coleção "solicitacoes"
         db.collection("solicitacoes")

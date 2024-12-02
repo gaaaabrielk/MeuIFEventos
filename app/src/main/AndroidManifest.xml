@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,13 +16,10 @@
         android:theme="@style/Theme.MeuIFEventos"
         tools:targetApi="31">
         <activity
-            android:name=".ListarSolicitacoesActivity"
+            android:name=".SolicitacaoListActivity"
             android:exported="false" />
         <activity
-            android:name=".AceitarSolicitacaoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SolicitacoesItensActivity"
+            android:name=".ListaSolicitacoesActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
@@ -31,12 +29,6 @@
             android:exported="false" />
         <activity
             android:name=".SolicitacaoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SolicitarItemActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ListaItensActivity"
             android:exported="false" />
         <activity
             android:name=".ListaTurmasActivity"
@@ -51,37 +43,10 @@
             android:name=".TurmaSelecaoActivity"
             android:exported="false" />
         <activity
-            android:name=".DetalhesTurmaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TurmaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SelecaoTurmas"
-            android:exported="false" />
-        <activity
-            android:name=".turmas"
-            android:exported="false" />
-        <activity
-            android:name=".addTurmas"
-            android:exported="false" />
-        <activity
             android:name=".addEvento"
             android:exported="false" />
         <activity
-            android:name=".cEvento"
-            android:exported="false" />
-        <activity
-            android:name=".cTurma"
-            android:exported="false" />
-        <activity
-            android:name=".turmas_activity"
-            android:exported="false" />
-        <activity
             android:name=".menu_activity"
-            android:exported="false" />
-        <activity
-            android:name=".calendar_activity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

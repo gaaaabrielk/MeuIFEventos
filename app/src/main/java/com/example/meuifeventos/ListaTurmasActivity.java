@@ -68,6 +68,7 @@ public class ListaTurmasActivity extends AppCompatActivity {
                             });
                             recyclerViewTurmas.setAdapter(turmaAdapter);
                         }
+
                     }
                 });
 

@@ -32,6 +32,7 @@ public class AlunosAdapter extends RecyclerView.Adapter<AlunosAdapter.AlunoViewH
         Aluno aluno = alunosList.get(position);
         holder.textViewNome.setText(aluno.getNome());
         holder.textViewMatricula.setText(aluno.getMatricula());
+        holder.textViewTurma.setText("Turma: " + aluno.getTurma());
     }
 
     @Override
@@ -42,11 +43,13 @@ public class AlunosAdapter extends RecyclerView.Adapter<AlunosAdapter.AlunoViewH
     public static class AlunoViewHolder extends RecyclerView.ViewHolder {
         TextView textViewNome;
         TextView textViewMatricula;
+        TextView textViewTurma;
 
         public AlunoViewHolder(View itemView) {
             super(itemView);
             textViewNome = itemView.findViewById(R.id.textViewNome);
             textViewMatricula = itemView.findViewById(R.id.textViewMatricula);
+            textViewTurma = itemView.findViewById(R.id.textViewTurma);
         }
     }
 }

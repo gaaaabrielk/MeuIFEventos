@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    >
+
+    <TextView
+        android:id="@+id/textViewTurma"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turma"
+        android:textSize="40dp"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+
+
+
+
     <TextView
         android:id="@+id/textViewNome"
         android:layout_width="wrap_content"
@@ -18,3 +35,4 @@
         android:text="Matrícula"
         android:textSize="14sp" />
 </LinearLayout>
+

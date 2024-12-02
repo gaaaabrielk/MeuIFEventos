@@ -51,7 +51,17 @@ public class menu_activity extends AppCompatActivity {
         btnNaviagte3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AlunosActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ListaTurmasActivity.class);
+                intent.putExtra("TURMA_ID", "TURMA");
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton btnNaviagte4 = findViewById(R.id.accSoli);
+        btnNaviagte4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SolicitacaoListActivity.class);
                 intent.putExtra("TURMA_ID", "TURMA");
                 startActivity(intent);
             }

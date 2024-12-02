@@ -1,25 +1,34 @@
 package com.example.meuifeventos;
 
 public class Aluno {
-    private String nome;
-    private String matricula;
+    private String Nome;
+    private String Matricula;
+    private String Turma;
 
     public Aluno() {} // Construtor vazio é obrigatório para o Firestore
 
     public String getNome() {
-        return nome;
+        return Nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome(String Nome) {
+        this.Nome = Nome;
     }
 
     public String getMatricula() {
-        return matricula;
+        return Matricula;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
+    public void setMatricula(String Matricula) {
+        this.Matricula = Matricula;
+    }
+
+    public String getTurma() {
+        return Turma;
+    }
+
+    public void setTurma(String Turma) {
+        this.Turma = Turma;
     }
 }
 
