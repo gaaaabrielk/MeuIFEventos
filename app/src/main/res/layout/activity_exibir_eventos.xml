@@ -33,14 +33,7 @@
         android:backgroundTint="@color/white"
         android:textColor="@color/black"/>
 
-    <Button
-        android:id="@+id/btnVoltarTurma"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Voltar para Seleção de Turmas"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/black"/>
+
 
 
 </LinearLayout>

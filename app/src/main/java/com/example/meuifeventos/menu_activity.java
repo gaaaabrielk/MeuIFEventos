@@ -68,6 +68,29 @@ public class menu_activity extends AppCompatActivity {
         });
 
 
+        FloatingActionButton btnNaviagte5 = findViewById(R.id.achadosEPer);
+        btnNaviagte5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), CadastroItemsActivity.class);
+                intent.putExtra("TURMA_ID", "TURMA");
+                startActivity(intent);
+            }
+        });
+
+
+        FloatingActionButton btnNaviagte6 = findViewById(R.id.itensAchados);
+        btnNaviagte6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ListagemItemsActivity.class);
+                intent.putExtra("TURMA_ID", "TURMA");
+                startActivity(intent);
+            }
+        });
+
+
+
 
 
     }

@@ -16,6 +16,21 @@
         android:theme="@style/Theme.MeuIFEventos"
         tools:targetApi="31">
         <activity
+            android:name=".AchadosPerdidosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListagemItemsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CadastroItemsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".selecionar"
+            android:exported="false" />
+        <activity
+            android:name=".menu_activity2"
+            android:exported="false" />
+        <activity
             android:name=".SolicitacaoListActivity"
             android:exported="false" />
         <activity

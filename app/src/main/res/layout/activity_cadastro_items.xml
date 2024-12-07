@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome do Item"
+            android:inputType="textCapWords"
+            android:padding="12dp" />
+
+        <EditText
+            android:id="@+id/editTextDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descrição do Item"
+            android:inputType="textMultiLine"
+            android:padding="12dp"
+            android:minLines="3" />
+
+        <EditText
+            android:id="@+id/editTextLocal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Local onde foi encontrado"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/textViewDataSelecionada"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data não selecionada"
+            android:padding="12dp"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp" />
+
+        <Button
+            android:id="@+id/buttonSelecionarData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selecionar Data"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:id="@+id/buttonSalvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar Item"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="?android:attr/colorAccent" />
+    </LinearLayout>
+</ScrollView>

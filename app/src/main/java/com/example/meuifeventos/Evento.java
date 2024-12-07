@@ -3,11 +3,11 @@ package com.example.meuifeventos;
 import com.google.firebase.firestore.DocumentId;
 
 public class Evento {
+
     private String titulo;
     private String descricao;
     private String data;
     private String local;
-
     @DocumentId
     private String id;
 
@@ -65,4 +65,6 @@ public class Evento {
     public void setId(String id) {
         this.id = id;
     }
+
+
 }

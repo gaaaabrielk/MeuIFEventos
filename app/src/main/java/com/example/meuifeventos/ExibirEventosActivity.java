@@ -36,24 +36,14 @@ public class ExibirEventosActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        Button btnVoltarTurma = findViewById(R.id.btnVoltarTurma);
-        btnVoltarTurma.setOnClickListener(v -> {
-            Intent intent = new Intent(ExibirEventosActivity.this, ListaTurmasActivity.class);
-            startActivity(intent);
-        });
-
-
-
-
         turmaId = getIntent().getStringExtra("TURMA_ID");
 
         recyclerViewEventos = findViewById(R.id.recyclerViewEventos);
         recyclerViewEventos.setLayoutManager(new LinearLayoutManager(this));
 
         eventosList = new ArrayList<>();
-        eventoAdapter = new EventoAdapter(eventosList);
+        eventoAdapter = new EventoAdapter(eventosList, turmaId);  // Passando o turmaId para o Adapter
         recyclerViewEventos.setAdapter(eventoAdapter);
-
 
         carregarEventos();
     }
@@ -68,6 +58,7 @@ public class ExibirEventosActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Evento evento = document.toObject(Evento.class);
+                            evento.setId(document.getId()); // Atribui o ID do documento ao evento
                             eventosList.add(evento);
                         }
                         eventoAdapter.notifyDataSetChanged();
@@ -78,4 +69,5 @@ public class ExibirEventosActivity extends AppCompatActivity {
                 });
     }
 }
+
 
